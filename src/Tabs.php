@@ -30,10 +30,15 @@ class Tabs extends Panel
                 $this->addFields($tab, $field->data);
                 continue;
             }
+            
             $field->panel = $this->name;
-            $field->withMeta([
-                'tab' => $tab,
-            ]);
+            
+            if (! $field instanceof MissingValue) {
+                $field->withMeta([
+                    'tab' => $tab,
+                ]);
+            }
+
             $this->data[] = $field;
         }
 
