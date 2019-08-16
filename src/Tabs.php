@@ -4,6 +4,7 @@ namespace Eminiarts\Tabs;
 use RuntimeException;
 use Laravel\Nova\Panel;
 use Illuminate\Http\Resources\MergeValue;
+use Illuminate\Http\Resources\MissingValue;
 use Laravel\Nova\Contracts\ListableField;
 
 class Tabs extends Panel
@@ -30,9 +31,9 @@ class Tabs extends Panel
                 $this->addFields($tab, $field->data);
                 continue;
             }
-            
+
             $field->panel = $this->name;
-            
+
             if (! $field instanceof MissingValue) {
                 $field->withMeta([
                     'tab' => $tab,
